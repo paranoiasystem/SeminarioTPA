@@ -1,0 +1,224 @@
+\documentclass[aspectratio=43]{beamer}
+
+\mode<presentation> {
+
+\usetheme{m}
+
+\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{amsfonts,amsmath,amssymb,amsthm,mathtools}
+\usepackage{color}
+\usepackage{multicol}
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{adjustbox} % for \adjincludegraphics
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Short title]{Adapter Pattern}
+
+\author{Marco Ferraioli, Dario Tecchia}
+\institute[UNISA]
+{
+Università degli Studi di Salerno\\
+marcoferraioli@live.com; dariotecchia@gmail.com\\
+marcoferraioli.com
+}
+\date{02/11/2015} % can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+	\titlepage % Print the title page as the first slide
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+    \textbf{Keynote}\pause
+	\begin{itemize}
+		\item{Introduzione Pattern Strutturali}\pause
+		\item Introduzione all'Adapter Pattern\pause
+		\begin{itemize}
+			\item Struttura dell'Adapter Pattern\pause
+			\item Tipologie di Adapter Pattern\pause
+		\end{itemize}
+		\item Esempi\pause
+		\item Conclusioni
+	\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\section{Introduzione Pattern Strutturali}
+
+\begin{frame}
+	\frametitle{ Pattern Strutturali}
+	\textbf{Introduzione Pattern Strutturali}\pause
+	\begin{itemize}
+		\item I pattern strutturali consentono di riutilizzare degli oggetti esistenti fornendo agli utilizzatori un'interfaccia più adatta alle loro esigenze\pause
+		\item Possono essere basati su classi o oggetti 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Pattern Strutturali}
+	\textbf{Introduzione Pattern Strutturali}\pause
+	\begin{itemize}
+		\item Design Pattern basati su classi:\pause
+		\begin{itemize}
+			\item utilizzano l’ereditarietà per generare classi che combinano le proprietà di classi base\pause 
+		\end{itemize}
+		\item Design Pattern basati su oggetti:\pause
+		\begin{itemize}
+			\item ci permettono di comporre oggetti per realizzare nuove funzionalità\pause
+			\item da flessibilità alla composizione che viene effettuata a run-time, cosa impossibile da realizzare con le classi 
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Introduzione all'Adapter Pattern}
+
+\begin{frame}
+	\frametitle{ Adapter Pattern}
+	\textbf{Introduzione all'Adapter Pattern}\pause
+	\begin{itemize}
+		\item L'adapter Pattern, conosciuto anche come Wrapper, si pone come soluzione astratta al problema dell'interoperabilità\\ tra interfacce differenti\pause
+		\item Il problema si presenta ogni qual volta in un progetto software si devono utilizzare sistemi di supporto (es. librerie) la cui interfaccia non è perfettamente compatibile con del codice precedentemente scritto
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\centerline{Esempi di Adapter nella vita reale}
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Adapter Pattern}
+	\begin{figure}[h!]
+		\adjincludegraphics[width=0.8\linewidth,valign=t]{img/ada4.jpg}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Adapter Pattern}
+	\begin{figure}[h!]
+		\adjincludegraphics[width=1\linewidth,valign=t]{img/ada3.jpg}
+	\end{figure}
+	%\text{\centerline{Adatta l'input all'output}}
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Adapter Pattern}
+	\begin{figure}[h!]
+		\adjincludegraphics[width=1\linewidth,valign=t]{img/ada2.jpg}
+	\end{figure}
+\end{frame}
+
+\section{Struttura dell'Adapter Pattern}
+
+\begin{frame}
+	\frametitle{ Adapter Pattern}
+	\textbf{Struttura dell'Adapter Pattern: Composizione}\pause
+	\begin{itemize}
+		\item \textbf{Adaptee:} definisce l’interfaccia di un diverso dominio applicativo da dover adattare per l’invocazione da parte del Client\pause
+		\item \textbf{Adapter:} definisce l’interfaccia compatibile con il Target che maschera l’invocazione dell’Adaptee\pause
+		\item \textbf{Target:} definisce l’interfaccia specifica del dominio applicativo utilizzata dal Client\pause
+		\item \textbf{Client:} colui che effettua l’invocazione all’operazione di interesse
+	\end{itemize}
+\end{frame}
+
+\section{Tipologie di Adapter Pattern}
+
+\begin{frame}
+	\frametitle{ Adapter Pattern}
+	\centerline{Class Adapter}
+	\begin{figure}[h!]
+		\adjincludegraphics[width=1\linewidth,valign=t,scale=0.7]{img/ClassAdapter.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Adapter Pattern}
+	\textbf{Class Adapter}\pause
+	\begin{itemize}
+		\item  Prevede un rapporto di ereditarietà tra Adapter e Adaptee (Adapter specializza Adaptee)\pause
+		\item Non è possibile creare un Adapter che specializzi più Adaptee\pause
+		\item Se esiste una gerarchia di Adaptee occorre creare una gereachia di Adapter
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Adapter Pattern}
+	\centerline{Object Adapter}
+	\begin{figure}[h!]
+		\adjincludegraphics[width=1\linewidth,valign=t,scale=0.7]{img/ObjectAdapter.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Adapter Pattern}
+	\textbf{Object Adapter}\pause
+	\begin{itemize}
+		\item  Prevede un rapporto di associazione tra Adapter e Adaptee (Adapter instanzia Adaptee)\pause
+		\item È possible avere un Adapter associato con più Adaptee
+	\end{itemize}
+\end{frame}
+
+\section{Esempi}
+
+\section{Conclusioni}
+
+\begin{frame}
+	\frametitle{ Adapter Pattern}
+	\textbf{Design Pattern Collegati}\pause
+	\begin{itemize}
+		\item Bridge Pattern\pause
+		\begin{itemize}
+			\item Ha una struttura simile a quella dell’Object Adapter, ma il Bridge ha scopi differenti: separa l’interfaccia dalla propria implementazione\pause
+		\end{itemize}
+		\item Decorator\pause
+		\begin{itemize}
+			\item Il decorator è simile all'Adapter Pattern, migliora gli oggetti senza cambiarne l'interfaccia, quindi la sua implementazione risulta più trasparente \pause
+		\end{itemize}
+		\item Proxy\pause
+		\begin{itemize}
+			\item Definisce un rappresentante di un altro oggetto e non cambia la sua interfaccia
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+%------------------------------------------------
+
+\begin{frame}
+    \centerline{Materiale:}
+    \centerline{https://github.com/paranoiasystem/SeminarioTPA}
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Adapter Pattern}
+	\centerline{Materiale sotto licenza GNU GPL}\pause
+	\begin{figure}[h!]
+		\adjincludegraphics[width=1\linewidth,valign=t,scale=0.8]{img/stallman.jpg}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+    \centerline{Fine, Domande?}
+\end{frame}
+
+%------------------------------------------------
+
+\end{document} 
+\grid
